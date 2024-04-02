@@ -3,145 +3,82 @@ const User = require("../Models/userModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-//user registration
-const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password, confirmPassword } = req.body;
+//user 
+const getAllUsers = asyncHandler(async (req, res) => {
+  const allUsers = await User.find();
 
-  if (!name || !email || !password || !confirmPassword) {
-    res.status(400).json({ message: "Please enter all the fields" });
-    return;
-  }
-
-  if (password !== confirmPassword) {
-    res.status(400).json({ message: "Passwords do not match" });
-    return;
-  }
-
-  const availableUser = await User.findOne({ email });
-  if (availableUser) {
-    res.status(400).json({ message: "Email address already exists!!" });
-    return;
-  }
-
-  const hashedPassword = await bcrypt.hash(password, 10);
-
-  const user = await User.create({
-    name,
-    email,
-    password: hashedPassword,
-    confirmPassword: await bcrypt.hash(confirmPassword, 10),
-    registrationDate: new Date(),
-  });
-
-  if (user) {
-    const token = jwt.sign(
-      { id: user.id, email: user.email, name: user.name },
-      process.env.ACCESS_KEY
-    );
-    res.status(201).json({
-      message: "User successfully created",
-      _id: user.id,
-      userName: user.name,
-      token,
-    });
+  if (!allUsers || allUsers.length === 0) {
+    res.status(404).json({ message: "No users found" });
   } else {
-    res.status(400).json({ message: "Invalid user data" });
+    res.status(200).json({ message: "SUCCESS", users: allUsers });
   }
 });
 
-//user login
-const loginUser = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
-  if (!email || !password) {
-    res.status(400);
-    throw new Error("Please enter all the fields");
-  }
 
-  const user = await User.findOne({ email });
-  if (user && (await bcrypt.compare(password, user.password))) {
-    const token = jwt.sign(
-      {
-        id: user.id,
-        email: user.email,
-        password: user.password,
-        name: user.name,
-      },
-      process.env.ACCESS_KEY
-    );
-    res.status(201).json({
-      message: "User Successfully logIn",
-      id: user.id,
-      userName: user.name,
-      registrationDate: user.registrationDate,
-      token,
-    });
-  } else {
-    res.status(400);
-    throw new Error("Invalid email and password");
-  }
-});
-
-// update password
-const updatePassword = asyncHandler(async (req, res) => {
-  const { name, password, newPassword } = req.body;
-
-  if (!name || !password || !newPassword) {
-    res.status(400).json({ message: "Please enter all the fields" });
-    return;
-  }
-
-  const user = await User.findOne({ name });
-  if (!user) {
-    res.status(400).json({ message: "User not found" });
-    return;
-  }
-
-  const passwordMatch = await bcrypt.compare(password, user.password);
-  if (!passwordMatch) {
-    res.status(400).json({ message: "Invalid current password" });
-    return;
-  }
-
-  const hashedNewPassword = await bcrypt.hash(newPassword, 10);
-
-  // Update the user's password
-  user.password = hashedNewPassword;
-  await user.save();
-
-  const token = jwt.sign({ email: user.email }, process.env.ACCESS_KEY);
-
-  res.status(200).json({
-    message: "Password successfully updated",
-    _id: user.id,
-    userName: user.name,
-    lastLoginDate: new Date(),
-    token,
-  });
-});
-
-//fetching current user
-const currentUser = asyncHandler(async (req, res) => {
+//search
+const searchUsers =  asyncHandler(async (req, res) => {
   try {
-    console.log("Decoded Token:", req.user);
-    const { name } = req.user;
+    const { query } = req.query;
+    const users = await User.find({
+      $or: [
+        { first_name: { $regex: query, $options: 'i' } }, 
+        { last_name: { $regex: query, $options: 'i' } }
+      ]
+    });
+    res.json(users);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+})
 
-    const user = await User.findOne({ name });
+//filter
+const filterUsers = asyncHandler(async (req, res) => {
+  try {
+    const { domain, gender, available } = req.query;
+    let query = {};
 
-    if (!user) {
-      console.error("User not found in the database.");
-      res.status(404).json({ message: "User not found" });
-      return;
+    if (domain) {
+      query.domain = domain;
+    }
+    if (gender) {
+      query.gender = gender;
+    }
+    if (available !== undefined) {
+      query.available = available;
     }
 
-    res.status(200).json({
-      userName: user.name,
-      registrationDate: user.registrationDate,
-      lastLoginDate: new Date(),
-    });
+    const filteredUsers = await User.find(query);
+    res.json(filteredUsers);
   } catch (error) {
-    console.error("Error fetching current user:", error);
-    res.status(500).json({ message: "Internal Server Error" });
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
   }
 });
 
-module.exports = { registerUser, loginUser, updatePassword, currentUser };
+
+const fetchUser = asyncHandler(async (req, res) => {
+  const { id } = req.query;
+
+  try {
+    const user = await User.findById(id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // If the user is found, send it in the response
+    res.status(200).json({ message: "User found", user });
+  } catch (error) {
+    console.error("Error fetching user:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+
+module.exports = filterUsers;
+
+
+
+
+module.exports = { getAllUsers, searchUsers, filterUsers, fetchUser};

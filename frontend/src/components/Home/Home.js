@@ -9,7 +9,7 @@ const Home = () => {
     <>
       <section className="home-container">
         <div className="header">
-          <h1>Users Collections</h1>
+          <h1>Users Manager</h1>
         </div>
         <div className="search-content">
           <div className="search">
@@ -20,12 +20,12 @@ const Home = () => {
             </div>
           </div>
           <div className="footer">
-           
-              <p>Search users</p>
+          <Link to="/listUsers" className="footer-link">
+              <p>Search Movies</p>
               <p>
                 <FaAngleDoubleDown />
               </p>
-       
+            </Link>
           </div>
         </div>
       </section>

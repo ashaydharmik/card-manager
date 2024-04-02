@@ -1,0 +1,17 @@
+@import "../css-config/mixins.scss";
+
+.filer-container{
+    width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 10px;
+.Domain-filter,.Gender-filter, .Availability-filter{
+    select{
+        padding: 5px 10px;
+        border-radius: 10px;
+        option{
+     }
+    }
+}
+}

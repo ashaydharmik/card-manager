@@ -1,0 +1,161 @@
+@import "../css-config/mixins.scss";
+
+.filters-teams{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 40px;
+  .filters{
+    width: 50%;
+    background-color: antiquewhite;
+  }
+  .teams{
+    width: 50%;
+    background-color: antiquewhite;
+  }
+ }
+.card-container {
+  width: 100%;
+  height: auto;
+ 
+  .card-list {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    place-items: center;
+    gap: 15px;
+    a {
+      text-decoration: none;
+    }
+    @include md {
+      grid-template-columns: repeat(4, 1fr);
+      place-items: center;
+      gap: 20px;
+    }
+    .card{
+      width: 280px;
+      height: 210px;
+         display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: #009fff;
+      background: -webkit-linear-gradient(to right, #ec2f4b, #009fff);
+      background: linear-gradient(to right, #ec2f4b, #009fff);
+      border-radius: 10px;
+      @include md{
+        width: 250px;
+      }
+      
+      .card-info{
+        width: 100%;
+        height: 100%;
+        padding: 10px 15px;
+        @include md{
+          padding: 10px 10px;
+        }
+        .left{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+          p:first-child{
+            background-color: rgb(252, 252, 62);
+            height: 70px;
+            width: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            border: 1px dashed black;
+            img{
+              filter: drop-shadow(5px 5px 10px black);
+              &:hover {
+                      transition: transform 0.3s ease;
+                      transform: scale(1.5);
+                    }
+            }
+          }
+          p:last-child{
+            font-size: 15px;
+            color: rgb(255, 234, 5);
+            font-weight: bold;
+          }
+        }
+        .right{
+          p{
+            font-size: 13px;
+            color: white;
+            margin-bottom: 5px;
+            font-weight: bold;
+            letter-spacing: 1px;
+          }
+          
+        }
+      }
+    }
+    // .card {
+    //   height: 300px;
+     
+    //   border-radius: 10px;
+    //   border: 1px solid black;
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: center;
+    //   flex-direction: column;
+    //   background: #009fff;
+    //   background: -webkit-linear-gradient(to right, #ec2f4b, #009fff);
+    //   background: linear-gradient(to right, #ec2f4b, #009fff);
+    //   @include md {
+    //     margin: 10px;
+    //     padding: 10px;
+    //     gap: 15px;
+    //   }
+
+    //   .card-info {
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     // flex-direction: column;
+
+    //     &:hover {
+    //       transition: transform 0.3s ease;
+    //       transform: scale(1.1);
+    //     }
+
+    //     h1 {
+    //       color: yellow;
+    //       padding-bottom: 10px;
+    //       @include md {
+    //         font-size: 18px;
+    //         text-align: center;
+    //       }
+    //     }
+    //     img {
+    //       filter: drop-shadow(5px 5px 10px black);
+    //       width: 250px;
+    //       height: 250px;
+          
+    //       @include md {
+    //         width: 200px;
+    //         height: 200px;
+    //       }
+    //     }
+    //   }
+    // }
+  }
+  .pagination{
+    p{
+      
+      .active{
+        background-color: grey;
+        color: red;
+      }
+
+    }
+
+  }
+}
+.selected {
+  border: 2px solid black; // Simplify the rule to increase its specificity
+}
