@@ -3,6 +3,9 @@ import { useGlobal } from '../Context/Context';
 import Search from '../Search/Search';
 import './listUsers.scss';
 import Filter from '../Filters/Filter';
+import axios from "axios"
+import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from 'react-router-dom';
 
 const ListUsers = () => {
   const { users: allUsers, isLoading } = useGlobal();
@@ -14,6 +17,7 @@ const ListUsers = () => {
   const displayedUsers = searchResults ? searchResults : (filteredUsers || users); 
   const [selectedUserId, setSelectedUserId] = useState([]);
   const [isSelectionMode, setIsSelectionMode] = useState(false);
+  const navigate = useNavigate()
 
   const noOfPages = Math.ceil(displayedUsers.length / userPerPage);
   const pages = [...Array(noOfPages + 1).keys()].slice(1);
@@ -36,7 +40,6 @@ const ListUsers = () => {
   }
 
   useEffect(() => {
-    // Update users state when searchResults change
     if (searchResults) {
       setUsers(searchResults);
     } else {
@@ -44,11 +47,33 @@ const ListUsers = () => {
     }
   }, [searchResults, allUsers]);
 
-  const handleAddTeam=()=>{
-    // Add your team adding logic here
+  const handleAddTeam = async () => {
     setIsSelectionMode(true);
-    console.log(selectedUserId) // Enable selection mode when adding teams
+  
+    try {
+      // Send POST request to createTeam API
+      const response = await axios.post('http://localhost:4000/createTeam', {
+        memberIds: selectedUserId // Pass selected user IDs to the API
+      });
+  
+      console.log(response.data);
+      toast.success("Team created successfully");
+      setTimeout(()=>{
+        navigate("/teams")
+      },1000)
+      
+    } catch (error) {
+      // Handle errors
+      if (error.response && error.response.data && error.response.data.message) {
+        toast.error(error.response.data.message);
+
+      } else {
+        console.error("Error:", error.message);
+        toast.error("An error occurred while creating the team.");
+      }
+    }
   }
+  
 
   const toggleSelectionMode = () => {
     setIsSelectionMode(!isSelectionMode);
@@ -56,7 +81,6 @@ const ListUsers = () => {
 
   const handleUserClick = (userId) => {
     if (isSelectionMode) {
-      // Toggle user selection
       if (selectedUserId.includes(userId)) {
         setSelectedUserId(selectedUserId.filter(id => id !== userId));
       } else {
@@ -73,7 +97,7 @@ const ListUsers = () => {
           <Filter onFilterChange={setFilteredUsers} /> 
         </div>
         <div className="teams">
-          <button onClick={toggleSelectionMode}>{isSelectionMode ? 'Cancel Selection' : 'Add Teams'}</button>
+          <button onClick={toggleSelectionMode}>{isSelectionMode ? 'Cancel Selection' : 'Create Teams'}</button>
           {isSelectionMode && selectedUserId.length > 0 && (
             <button onClick={handleAddTeam}>Add Selected Users to Team</button>
           )}
@@ -116,6 +140,16 @@ const ListUsers = () => {
           <button onClick={nextPage}>Next</button>
         </div>
       </section>
+      <Toaster
+        toastOptions={{
+          style: {
+            background: "#363636",
+            color: "#fff",
+            width: "350px",
+            fontSize: "18px",
+          },
+        }}
+      />
     </>
   );
 };

@@ -52,4 +52,33 @@ const createTeam = asyncHandler(async (req, res) => {
     }
 });
 
-module.exports = { createTeam };
+const getAllTeams = asyncHandler(async (req, res) => {
+  const allTeams = await Team.find();
+
+  if (!allTeams || allTeams.length === 0) {
+    res.status(404).json({ message: "No Teams found" });
+  } else {
+    res.status(200).json({ message: "SUCCESS", teams: allTeams });
+  }
+});
+
+const fetchSingleTeam = async (req, res) => {
+  const { _id } = req.params;
+
+  try {
+    const team = await Team.findById(_id).populate('members');
+
+    if (!team) {
+      return res.status(404).json({ message: 'Team not found' });
+    }
+
+    res.status(200).json({ message: 'SUCCESS', team });
+  } catch (error) {
+    console.error('Error fetching single team:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+
+
+module.exports = { createTeam, getAllTeams , fetchSingleTeam};

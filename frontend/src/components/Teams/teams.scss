@@ -1,0 +1,57 @@
+@import "../css-config/mixins.scss";
+
+.teams-container{
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 20px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .teams-heading{
+        width: 100%;
+        height: 20%;
+        text-align: center;
+        h1{
+            font-size: 40px;
+            color: linear-gradient(to right, #ec2f4b, #009fff);
+            filter: drop-shadow(5px 5px 10px black);
+        }
+    }
+    .teams-collections{
+        width: 100%;
+        margin-top: 15px;
+        ol{
+            li{
+                background: linear-gradient(to right, #dd3d3d, #feb12d);
+    font-size: 18px;
+    margin-bottom: 10px;
+    // padding-left: 20px;
+    border-radius: 7px;
+    text-transform: uppercase;
+    padding: 10px;
+    font-weight: 600;
+    filter: drop-shadow(5px 4px 3px black);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p:last-child{
+        button{
+            margin-right: 10px;
+            color: black;
+          font-size: 14px;
+         padding: 5px 10px;
+         border-radius: 10px;
+          background: white;
+          align-items: center;
+          cursor: pointer;
+          font-weight: 500;
+        }
+    }
+            }
+        }
+    }
+}
