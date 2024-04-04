@@ -92,7 +92,7 @@ const ListUsers = () => {
   };
 
 const handleDeleteUser=(userId)=>{
-  axios.delete(`http://localhost:4000/deleteUser/${userId}`)
+  axios.delete(`https://card-manager-m4wb.onrender.com/${userId}`)
   .then(res=>{
     console.log(res.data)
     toast.success("User created successfully");
