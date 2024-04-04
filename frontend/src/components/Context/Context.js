@@ -5,8 +5,13 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [users, setUsers] = useState([]);
+  
 
   useEffect(() => {
+    showUsers()
+  }, []);
+
+  const showUsers=()=>{
     setIsLoading(true);
     axios
       .get("https://card-manager-m4wb.onrender.com/getUsers")
@@ -18,7 +23,7 @@ const AppProvider = ({ children }) => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }
 
   return (
     <AppContext.Provider
@@ -27,6 +32,7 @@ const AppProvider = ({ children }) => {
         users,
         setIsLoading,
         setUsers,
+        showUsers
       }}
     >
       {children}

@@ -74,10 +74,36 @@ const fetchUser = asyncHandler(async (req, res) => {
   }
 });
 
+//delete a user
+const deleteUser = asyncHandler(async (req, res) => {
+  const { _id } = req.params;
+
+  if (!_id) {
+    res
+      .status(400)
+      .json({ error: "Invalid request" });
+    return;
+  }
+
+  const deletedUser = await User.findByIdAndDelete(_id);
+
+  if (!deletedUser) {
+    res.status(404).json({ error: "Created User not found." });
+  } else {
+    res
+      .status(200)
+      .json({
+        message: "User Successfully Deleted!!",
+        Username: deletedUser.name,
+      });
+  }
+});
+
+
 
 module.exports = filterUsers;
 
 
 
 
-module.exports = { getAllUsers, searchUsers, filterUsers, fetchUser};
+module.exports = { getAllUsers, searchUsers, filterUsers, fetchUser, deleteUser};

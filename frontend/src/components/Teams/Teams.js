@@ -4,6 +4,8 @@ import axios from "axios";
 import TeamModal from "../Modal/TeamModal/TeamModal";
 import DeleteModal from "../Modal/DeleteModal/DeleteModal";
 import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
+
 const Teams = () => {
   const [teams, setTeams] = useState([]);
   const [isTeamModalOpen, setIsTeamModalOpen] = useState(false);
@@ -50,7 +52,7 @@ const Teams = () => {
     <>
       <section className="teams-container">
         <div className="back-btn">
-          <button onClick={handleBackClick}>Back</button>
+          <button onClick={handleBackClick}><FaArrowLeft /> Back</button>
         </div>
         <div className="teams-heading">
           <h1>Teams</h1>

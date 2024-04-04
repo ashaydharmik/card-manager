@@ -6,9 +6,10 @@ import Filter from "../Filters/Filter";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { MdDelete } from "react-icons/md";
 
 const ListUsers = () => {
-  const { users: allUsers, isLoading } = useGlobal();
+  const { users: allUsers, isLoading,showUsers } = useGlobal();
   const [users, setUsers] = useState(allUsers);
   const [userPerPage, setUserPerPage] = useState(20);
   const [currentPage, setCurrentPage] = useState(1);
@@ -90,6 +91,22 @@ const ListUsers = () => {
     }
   };
 
+const handleDeleteUser=(userId)=>{
+  axios.delete(`http://localhost:4000/deleteUser/${userId}`)
+  .then(res=>{
+    console.log(res.data)
+    toast.success("User created successfully");
+    showUsers();
+  })
+  .catch(error=>{
+    
+      toast.error(error.response.data.message);
+   
+      console.error("Error:", error.message);
+  })
+}
+  
+
   return (
     <>
       <Search
@@ -139,10 +156,13 @@ const ListUsers = () => {
                     </p>
                   </div>
                   <div className="right">
+                    <div>
                     <p>Email: {user.email}</p>
                     <p>Gender: {user.gender}</p>
                     <p>Domain: {user.domain}</p>
                     <p>Available: {`${user.available ? "Yes" : "No"}`}</p>
+                    </div>
+                    <div className="del"><MdDelete onClick={()=> handleDeleteUser(user._id)}/></div>
                   </div>
                 </div>
               </div>

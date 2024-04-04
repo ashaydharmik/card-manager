@@ -12,13 +12,13 @@
   }
   .filters {
     width: 50%;
-    // background-color: antiquewhite;
+   
   }
   .teams {
     width: 50%;
     display: flex;
     justify-content: flex-end;
-    // background-color: antiquewhite;
+    
     align-items: center;
 
     gap: 20px;
@@ -31,7 +31,7 @@
     button {
       padding: 5px 10px;
       border-radius: 10px;
-      // border: none;
+    
       cursor: pointer;
       background-image: radial-gradient(
         circle farthest-corner at 10% 20%,
@@ -42,7 +42,7 @@
       border: none;
       outline: 1px solid black;
       font-weight: bold;
-      // color: black;
+    
     }
   }
 }
@@ -123,6 +123,18 @@
             font-weight: bold;
             letter-spacing: 1px;
           }
+          .del{
+            position: relative;
+            width: 100%;
+            svg{
+              position: absolute;
+    bottom: 0;
+    right: 0;
+    color: red;
+    font-size: 22px;
+    cursor: pointer;
+            }
+          }
         }
       }
     }
@@ -181,15 +193,15 @@
   }
 }
 .selected {
-  border: 2px solid black; // Simplify the rule to increase its specificity
+  border: 2px solid greenyellow; 
 }
 
 @keyframes bounce {
   0%,
   100% {
-    transform: scale(1); /* Start and end state: normal scale */
+    transform: scale(1); 
   }
   50% {
-    transform: scale(1.2); /* Mid-state: slightly larger scale */
+    transform: scale(1.2); 
   }
 }

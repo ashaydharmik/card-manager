@@ -1,7 +1,7 @@
 const express = require("express");
 const errorHandler = require("../Middleware/errorHandler");
 const {
-  getAllUsers, searchUsers, filterUsers, fetchUser
+  getAllUsers, searchUsers, filterUsers, fetchUser, deleteUser
 } = require("../Controller/userController");
 
 
@@ -16,6 +16,8 @@ router.get("/search", searchUsers);//
 router.get("/filterUser",filterUsers)//
 
 router.get("/fetchUser",fetchUser)
+
+router.delete("/deleteUser/:_id",deleteUser)
 
 router.post("/createTeam", createTeam)//
 

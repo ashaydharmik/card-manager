@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import axios from "axios"; // Import axios
+import axios from "axios"; 
 import "./search.scss";
-
+import { FaArrowRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+
 const Search = ({ setSearchResults }) => {
-  // Receive setSearchResults as prop
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
   const handleInputChange = async (e) => {
@@ -28,7 +28,7 @@ const Search = ({ setSearchResults }) => {
     <>
       <section className="search">
         <div className="team-btn">
-          <button onClick={handleTeamsClick}>Teams</button>
+          <button onClick={handleTeamsClick}>Teams <FaArrowRight /></button>
         </div>
         <div className="heading">
           <h1>WELCOME</h1>
