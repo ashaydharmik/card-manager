@@ -12,7 +12,7 @@ const Search = ({ setSearchResults }) => {
     setSearchQuery(query);
     try {
       const response = await axios.get(
-        `http://localhost:4000/search?query=${query}`
+        `https://card-manager-m4wb.onrender.com/search?query=${query}`
       );
       setSearchResults(response.data);
     } catch (error) {

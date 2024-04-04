@@ -9,7 +9,7 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get("http://localhost:4000/getUsers")
+      .get("https://card-manager-m4wb.onrender.com/getUsers")
       .then((res) => {
         console.log(res.data.users);
         setUsers(res.data.users);

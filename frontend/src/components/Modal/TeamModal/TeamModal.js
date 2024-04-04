@@ -28,7 +28,7 @@ const TeamModal = ({ isOpen, onClose, teamId }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/getSingleTeam/${teamId}`)
+      .get(`https://card-manager-m4wb.onrender.com/getSingleTeam/${teamId}`)
       .then((res) => {
         console.log(res.data);
         setMembersData(res.data);

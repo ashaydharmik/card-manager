@@ -9,7 +9,7 @@ const Filter = ({ onFilterChange }) => {
 
   const handleFilterChange = async () => {
     try {
-      let url = `http://localhost:4000/filterUser?`;
+      let url = `https://card-manager-m4wb.onrender.com/filterUser?`;
       if (domain) url += `&domain=${domain}`;
       if (gender) url += `&gender=${gender}`;
       if (available) url += `&available=${available}`;

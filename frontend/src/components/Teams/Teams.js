@@ -28,7 +28,7 @@ const Teams = () => {
 
   const handleTeamShow = () => {
     axios
-      .get("http://localhost:4000/getTeams")
+      .get("https://card-manager-m4wb.onrender.com/getTeams")
       .then((res) => {
         console.log(res.data);
         setTeams(res.data.teams);

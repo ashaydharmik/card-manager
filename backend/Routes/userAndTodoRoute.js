@@ -9,21 +9,21 @@ const {createTeam, getAllTeams, fetchSingleTeam,deleteTeam } = require("../Contr
 
 const router = express.Router();
 
-router.get("/getUsers", getAllUsers);
+router.get("/getUsers", getAllUsers);//
 
-router.get("/search", searchUsers);
+router.get("/search", searchUsers);//
 
-router.get("/filterUser",filterUsers)
+router.get("/filterUser",filterUsers)//
 
 router.get("/fetchUser",fetchUser)
 
-router.post("/createTeam", createTeam)
+router.post("/createTeam", createTeam)//
 
-router.get("/getTeams", getAllTeams);
+router.get("/getTeams", getAllTeams);//
 
-router.get("/getSingleTeam/:_id", fetchSingleTeam);
+router.get("/getSingleTeam/:_id", fetchSingleTeam);//
 
-router.delete("/deleteTeam/:_id", deleteTeam);
+router.delete("/deleteTeam/:_id", deleteTeam);//
 
 router.use(errorHandler);
 

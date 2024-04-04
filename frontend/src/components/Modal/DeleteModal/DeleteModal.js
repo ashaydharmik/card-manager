@@ -26,7 +26,7 @@ const DeleteModal = ({ isOpen, onClose, teamId, handleTeamShow }) => {
 
   const handleDelete = () => {
     axios
-      .delete(`http://localhost:4000/deleteTeam/${teamId}`)
+      .delete(`https://card-manager-m4wb.onrender.com/deleteTeam/${teamId}`)
       .then((res) => {
         console.log(res.data);
         onClose();
