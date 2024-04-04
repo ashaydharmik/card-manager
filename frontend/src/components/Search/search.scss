@@ -1,30 +1,30 @@
 @import "../css-config/mixins.scss";
 
 .search {
-  .team-btn{
-      position: relative;
-      top: 20px;
-      right: 10px;
-      width: 100%;
-      display: flex;
-      justify-content: flex-end;
-      align-items: flex-end;
-      button{
-          padding: 5px 15px;
-          border-radius: 10px;
-          cursor: pointer;
-          // cursor: pointer;
-        background-image: radial-gradient(
-            circle farthest-corner at 10% 20%,
-            rgba(248, 142, 36, 0.84)20.8%,
-            rgba(250, 42, 66, 0.87) 84.4%
-          );
-          color: white;
-          border: none;
-          outline: 2px solid black;
-          font-weight: bold;
-          color: black;
-      }
+  .team-btn {
+    position: relative;
+    top: 20px;
+    right: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    button {
+      padding: 5px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      // cursor: pointer;
+      background-image: radial-gradient(
+        circle farthest-corner at 10% 20%,
+        rgba(248, 142, 36, 0.84) 20.8%,
+        rgba(250, 42, 66, 0.87) 84.4%
+      );
+      color: white;
+      border: none;
+      outline: 2px solid black;
+      font-weight: bold;
+      color: black;
+    }
   }
   .heading {
     display: flex;
@@ -32,7 +32,7 @@
     justify-content: center;
     align-items: center;
     margin: 40px 20px;
-    @include md{
+    @include md {
       margin: 20px 20px 10px 20px;
     }
     img {
@@ -60,50 +60,47 @@
       }
     }
   }
-    .search-bar {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-     margin-bottom: 20px;
-     
-      form {
-        // background-color: aqua;
-        width: 80%;
-        height: 40px;
-        display: flex;
-        @include md{
-          width: 50%;
-        }
-        input {
-          flex: 1;
-          border-radius: 20px 0px 0px 20px;
-          padding-left: 10px;
-          font-size: 15px;
-          border: 1px solid black;
-          filter: drop-shadow(-1px 3px 4px rgb(89, 89, 89));
-        }
-        button {
-          width: 89px;
-          border-radius: 0px 20px 20px 0px;
-          cursor: pointer;
-          background-image: radial-gradient(
-            circle farthest-corner at 10% 20%,
-            rgba(237, 3, 32, 0.87) 20.8%,
-            rgba(242, 121, 1, 0.84) 74.4%
-          );
-          color: white;
-          font-size: 13px;
-          font-weight: bold;
-          letter-spacing: 1px;
-          border: 1px solid black;
-          filter: drop-shadow(-1px 3px 4px rgb(89, 89, 89));
-        }
-      }
-      
-    }
-   
+  .search-bar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
 
+    form {
+      // background-color: aqua;
+      width: 80%;
+      height: 40px;
+      display: flex;
+      @include md {
+        width: 50%;
+      }
+      input {
+        flex: 1;
+        border-radius: 20px 0px 0px 20px;
+        padding-left: 10px;
+        font-size: 15px;
+        border: 1px solid black;
+        filter: drop-shadow(-1px 3px 4px rgb(89, 89, 89));
+      }
+      button {
+        width: 89px;
+        border-radius: 0px 20px 20px 0px;
+        cursor: pointer;
+        background-image: radial-gradient(
+          circle farthest-corner at 10% 20%,
+          rgba(237, 3, 32, 0.87) 20.8%,
+          rgba(242, 121, 1, 0.84) 74.4%
+        );
+        color: white;
+        font-size: 13px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        border: 1px solid black;
+        filter: drop-shadow(-1px 3px 4px rgb(89, 89, 89));
+      }
+    }
+  }
 }
 
 .loading-container {

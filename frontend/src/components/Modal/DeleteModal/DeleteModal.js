@@ -4,8 +4,7 @@ import "./deleteModal.scss";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 
-const DeleteModal = ({ isOpen, onClose, teamId ,handleTeamShow}) => {
-
+const DeleteModal = ({ isOpen, onClose, teamId, handleTeamShow }) => {
   const customStyles = {
     content: {
       position: "fixed",
@@ -27,15 +26,13 @@ const DeleteModal = ({ isOpen, onClose, teamId ,handleTeamShow}) => {
 
   const handleDelete = () => {
     axios
-      .delete(
-        `http://localhost:4000/deleteTeam/${teamId}`,
-      )
-      .then(res => {
-        console.log(res.data)
-       onClose();
-       handleTeamShow()
+      .delete(`http://localhost:4000/deleteTeam/${teamId}`)
+      .then((res) => {
+        console.log(res.data);
+        onClose();
+        handleTeamShow();
       })
-      .catch(err => {
+      .catch((err) => {
         console.error("Error deleting todo:", err);
       });
   };

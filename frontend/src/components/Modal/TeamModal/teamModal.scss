@@ -1,116 +1,112 @@
 @import "../../css-config/mixins.scss";
 
-
-
-
-.team-details{
+.team-details {
+  width: 100%;
+  .btn {
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    button {
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      color: white;
+      border: none;
+      border: 5px;
+      font-weight: bolder;
+      cursor: pointer;
+    }
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .card-list {
     width: 100%;
-    .btn{
-        display: flex;
-        justify-content: end;
-        align-items: flex-end;
-        button{
-            width: 20px;
-            height: 20px;
-            background-color: red;
-            color: white;
-            border: none;
-            border: 5px;
-            font-weight: bolder;
-            cursor: pointer;
-        }
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    place-items: center;
+    gap: 15px;
+    a {
+      text-decoration: none;
     }
-    h2{
-        text-align: center;
-        margin-bottom: 20px;
+    @include md {
+      grid-template-columns: repeat(2, 1fr);
+      place-items: center;
+      gap: 20px;
     }
-    .card-list {
+    .card {
       width: 100%;
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        place-items: center;
-        gap: 15px;
-        a {
-          text-decoration: none;
-        }
-        @include md {
-          grid-template-columns: repeat(2, 1fr);
-          place-items: center;
-          gap: 20px;
-        }
-        .card{
-          width: 100%;
-          height: 210px;
-             display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-direction: column;
-          background: #009fff;
-          background: -webkit-linear-gradient(to right, #ec2f4b, #009fff);
-          background: linear-gradient(to right, #ec2f4b, #009fff);
-          border-radius: 10px;
-          @include md{
-            width: 80%;
-          }
-          
-          .card-info{
-            width: 100%;
-            height: 100%;
-            padding: 10px 15px;
-            @include md{
-              padding: 10px 10px;
-            }
-            .left{
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              margin-bottom: 20px;
-              p:first-child{
-                background-color: rgb(252, 252, 62);
-                height: 70px;
-                width: 70px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-radius: 10px;
-                border: 1px dashed black;
-                img{
-                  filter: drop-shadow(5px 5px 10px black);
-                  animation: bounce 1s infinite;
-                  &:hover {
-                          transition: transform 0.3s ease;
-                          transform: scale(1.5);
-                        }
-                }
-              }
-              p:last-child{
-                font-size: 15px;
-                color: rgb(255, 234, 5);
-                font-weight: bold;
-                text-decoration: underline;
-              }
-            }
-            .right{
-              p{
-                font-size: 13px;
-                color: white;
-                margin-bottom: 5px;
-                font-weight: bold;
-                letter-spacing: 1px;
-              }
-              
-            }
-          }
-        }
-       
+      height: 210px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: #009fff;
+      background: -webkit-linear-gradient(to right, #ec2f4b, #009fff);
+      background: linear-gradient(to right, #ec2f4b, #009fff);
+      border-radius: 10px;
+      @include md {
+        width: 80%;
       }
+
+      .card-info {
+        width: 100%;
+        height: 100%;
+        padding: 10px 15px;
+        @include md {
+          padding: 10px 10px;
+        }
+        .left {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+          p:first-child {
+            background-color: rgb(252, 252, 62);
+            height: 70px;
+            width: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            border: 1px dashed black;
+            img {
+              filter: drop-shadow(5px 5px 10px black);
+              animation: bounce 1s infinite;
+              &:hover {
+                transition: transform 0.3s ease;
+                transform: scale(1.5);
+              }
+            }
+          }
+          p:last-child {
+            font-size: 15px;
+            color: rgb(255, 234, 5);
+            font-weight: bold;
+            text-decoration: underline;
+          }
+        }
+        .right {
+          p {
+            font-size: 13px;
+            color: white;
+            margin-bottom: 5px;
+            font-weight: bold;
+            letter-spacing: 1px;
+          }
+        }
+      }
+    }
+  }
 }
 
 @keyframes bounce {
-  0%, 100% {
-    transform: scale(1); /* Start and end state: normal scale */
+  0%,
+  100% {
+    transform: scale(1); 
   }
   50% {
-    transform: scale(1.2); /* Mid-state: slightly larger scale */
+    transform: scale(1.2); 
   }
 }

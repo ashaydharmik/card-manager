@@ -1,7 +1,6 @@
 const asyncHandler = require("../Middleware/asyncHandler");
 const User = require("../Models/userModel");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+
 
 //user 
 const getAllUsers = asyncHandler(async (req, res) => {
@@ -56,7 +55,7 @@ const filterUsers = asyncHandler(async (req, res) => {
   }
 });
 
-
+//fetching single user data
 const fetchUser = asyncHandler(async (req, res) => {
   const { id } = req.query;
 
@@ -67,7 +66,7 @@ const fetchUser = asyncHandler(async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    // If the user is found, send it in the response
+  
     res.status(200).json({ message: "User found", user });
   } catch (error) {
     console.error("Error fetching user:", error);

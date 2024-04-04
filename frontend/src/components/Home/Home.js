@@ -3,7 +3,6 @@ import "./home.scss";
 import { FaAngleDoubleDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-
 const Home = () => {
   return (
     <>
@@ -14,13 +13,12 @@ const Home = () => {
         <div className="search-content">
           <div className="search">
             <div className="heading">
-  
               <h1>WELCOME</h1>
               <h2>Millions of users to discover. Explore Now.</h2>
             </div>
           </div>
           <div className="footer">
-          <Link to="/listUsers" className="footer-link">
+            <Link to="/listUsers" className="footer-link">
               <p>Search Movies</p>
               <p>
                 <FaAngleDoubleDown />

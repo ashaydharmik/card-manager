@@ -1,57 +1,55 @@
 @import "../css-config/mixins.scss";
 
-.filters-teams{
+.filters-teams {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 40px;
-margin-top: 40px;
-  @include md{
+  margin-top: 40px;
+  @include md {
     justify-content: space-between;
-
   }
-  .filters{
+  .filters {
     width: 50%;
     // background-color: antiquewhite;
   }
-  .teams{
+  .teams {
     width: 50%;
     display: flex;
     justify-content: flex-end;
     // background-color: antiquewhite;
     align-items: center;
-    
+
     gap: 20px;
     flex-direction: column;
     padding: 10px;
-    @include md{
+    @include md {
       flex-direction: row;
       padding-right: 20px;
     }
-  button{
-    padding: 5px 10px;
-    border-radius: 10px;
-    // border: none;
-    cursor: pointer;
-        background-image: radial-gradient(
-            circle farthest-corner at 10% 20%,
-            rgba(248, 142, 36, 0.84)20.8%,
-            rgba(250, 42, 66, 0.87) 84.4%
-          );
-          color: white;
-          border: none;
-          outline: 1px solid black;
-          font-weight: bold;
-          // color: black;
-         
+    button {
+      padding: 5px 10px;
+      border-radius: 10px;
+      // border: none;
+      cursor: pointer;
+      background-image: radial-gradient(
+        circle farthest-corner at 10% 20%,
+        rgba(248, 142, 36, 0.84) 20.8%,
+        rgba(250, 42, 66, 0.87) 84.4%
+      );
+      color: white;
+      border: none;
+      outline: 1px solid black;
+      font-weight: bold;
+      // color: black;
+    }
   }
-  }
- }
+}
 .card-container {
   width: 100%;
   height: auto;
- 
+
   .card-list {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -65,10 +63,10 @@ margin-top: 40px;
       place-items: center;
       gap: 20px;
     }
-    .card{
+    .card {
       width: 280px;
       height: 210px;
-         display: flex;
+      display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
@@ -76,23 +74,23 @@ margin-top: 40px;
       background: -webkit-linear-gradient(to right, #ec2f4b, #009fff);
       background: linear-gradient(to right, #ec2f4b, #009fff);
       border-radius: 10px;
-      @include md{
+      @include md {
         width: 250px;
       }
-      
-      .card-info{
+
+      .card-info {
         width: 100%;
         height: 100%;
         padding: 10px 15px;
-        @include md{
+        @include md {
           padding: 10px 10px;
         }
-        .left{
+        .left {
           display: flex;
           justify-content: space-between;
           align-items: center;
           margin-bottom: 20px;
-          p:first-child{
+          p:first-child {
             background-color: rgb(252, 252, 62);
             height: 70px;
             width: 70px;
@@ -101,61 +99,58 @@ margin-top: 40px;
             align-items: center;
             border-radius: 10px;
             border: 1px dashed black;
-            img{
+            img {
               filter: drop-shadow(5px 5px 10px black);
               animation: bounce 1s infinite;
               &:hover {
-                      transition: transform 0.3s ease;
-                      transform: scale(1.5);
-                    }
+                transition: transform 0.3s ease;
+                transform: scale(1.5);
+              }
             }
           }
-          p:last-child{
+          p:last-child {
             font-size: 15px;
             color: rgb(255, 234, 5);
             font-weight: bold;
             text-decoration: underline;
           }
         }
-        .right{
-          p{
+        .right {
+          p {
             font-size: 13px;
             color: white;
             margin-bottom: 5px;
             font-weight: bold;
             letter-spacing: 1px;
           }
-          
         }
       }
     }
-   
   }
-  .pagination{
+  .pagination {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 2rem ;
+    margin-top: 2rem;
     padding-bottom: 2rem;
     width: 100%;
     flex-direction: column;
-    @include md{
+    @include md {
       flex-direction: row;
     }
-    #btn{
+    #btn {
       padding: 5px 10px;
       border-radius: 10px;
       border: none;
       background-image: radial-gradient(
-          circle farthest-corner at 10% 20%,
-          rgba(248, 142, 36, 0.84)20.8%,
-          rgba(250, 42, 66, 0.87) 84.4%
-        );
-        color: black;
-        outline: 1px solid black;
-      
+        circle farthest-corner at 10% 20%,
+        rgba(248, 142, 36, 0.84) 20.8%,
+        rgba(250, 42, 66, 0.87) 84.4%
+      );
+      color: black;
+      outline: 1px solid black;
     }
-    p{
+    p {
       display: flex;
       width: 100%;
       justify-content: center;
@@ -163,28 +158,26 @@ margin-top: 40px;
       flex-wrap: wrap;
       padding: 20px;
       gap: 2px;
-@include md{
-  width: auto;
-  padding: 0px;
-  gap: 0px;
-}
-     button{
-      width: 20px;
-      height: 20px;
-      margin-right: 1px;
-    }
-    .active{
-      background-image: radial-gradient(
+      @include md {
+        width: auto;
+        padding: 0px;
+        gap: 0px;
+      }
+      button {
+        width: 20px;
+        height: 20px;
+        margin-right: 1px;
+      }
+      .active {
+        background-image: radial-gradient(
           circle farthest-corner at 10% 20%,
-          rgba(248, 142, 36, 0.84)20.8%,
+          rgba(248, 142, 36, 0.84) 20.8%,
           rgba(250, 42, 66, 0.87) 84.4%
         );
         color: black;
         border: none;
+      }
     }
-
-    }
-
   }
 }
 .selected {
@@ -192,7 +185,8 @@ margin-top: 40px;
 }
 
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1); /* Start and end state: normal scale */
   }
   50% {

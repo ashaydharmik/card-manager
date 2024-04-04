@@ -14,9 +14,11 @@ router.get("/getUsers", getAllUsers);
 router.get("/search", searchUsers);
 
 router.get("/filterUser",filterUsers)
+
 router.get("/fetchUser",fetchUser)
 
 router.post("/createTeam", createTeam)
+
 router.get("/getTeams", getAllTeams);
 
 router.get("/getSingleTeam/:_id", fetchSingleTeam);
