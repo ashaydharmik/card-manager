@@ -3,21 +3,49 @@
 .filters-teams{
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-bottom: 40px;
+margin-top: 40px;
+  @include md{
+    justify-content: space-between;
+
+  }
   .filters{
     width: 50%;
-    background-color: antiquewhite;
+    // background-color: antiquewhite;
   }
   .teams{
     width: 50%;
     display: flex;
     justify-content: flex-end;
-    background-color: antiquewhite;
+    // background-color: antiquewhite;
     align-items: center;
-    padding-right: 20px;
+    
     gap: 20px;
+    flex-direction: column;
+    padding: 10px;
+    @include md{
+      flex-direction: row;
+      padding-right: 20px;
+    }
+  button{
+    padding: 5px 10px;
+    border-radius: 10px;
+    // border: none;
+    cursor: pointer;
+        background-image: radial-gradient(
+            circle farthest-corner at 10% 20%,
+            rgba(248, 142, 36, 0.84)20.8%,
+            rgba(250, 42, 66, 0.87) 84.4%
+          );
+          color: white;
+          border: none;
+          outline: 1px solid black;
+          font-weight: bold;
+          // color: black;
+         
+  }
   }
  }
 .card-container {
@@ -75,6 +103,7 @@
             border: 1px dashed black;
             img{
               filter: drop-shadow(5px 5px 10px black);
+              animation: bounce 1s infinite;
               &:hover {
                       transition: transform 0.3s ease;
                       transform: scale(1.5);
@@ -85,6 +114,7 @@
             font-size: 15px;
             color: rgb(255, 234, 5);
             font-weight: bold;
+            text-decoration: underline;
           }
         }
         .right{
@@ -102,12 +132,56 @@
    
   }
   .pagination{
-    p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem ;
+    padding-bottom: 2rem;
+    width: 100%;
+    flex-direction: column;
+    @include md{
+      flex-direction: row;
+    }
+    #btn{
+      padding: 5px 10px;
+      border-radius: 10px;
+      border: none;
+      background-image: radial-gradient(
+          circle farthest-corner at 10% 20%,
+          rgba(248, 142, 36, 0.84)20.8%,
+          rgba(250, 42, 66, 0.87) 84.4%
+        );
+        color: black;
+        outline: 1px solid black;
       
-      .active{
-        background-color: grey;
-        color: red;
-      }
+    }
+    p{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 20px;
+      gap: 2px;
+@include md{
+  width: auto;
+  padding: 0px;
+  gap: 0px;
+}
+     button{
+      width: 20px;
+      height: 20px;
+      margin-right: 1px;
+    }
+    .active{
+      background-image: radial-gradient(
+          circle farthest-corner at 10% 20%,
+          rgba(248, 142, 36, 0.84)20.8%,
+          rgba(250, 42, 66, 0.87) 84.4%
+        );
+        color: black;
+        border: none;
+    }
 
     }
 
@@ -115,4 +189,13 @@
 }
 .selected {
   border: 2px solid black; // Simplify the rule to increase its specificity
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(1); /* Start and end state: normal scale */
+  }
+  50% {
+    transform: scale(1.2); /* Mid-state: slightly larger scale */
+  }
 }

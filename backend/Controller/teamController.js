@@ -80,5 +80,29 @@ const fetchSingleTeam = async (req, res) => {
 };
 
 
+const deleteTeam = asyncHandler(async (req, res) => {
+  const { _id, teamName } = req.params;
 
-module.exports = { createTeam, getAllTeams , fetchSingleTeam};
+  if (!_id) {
+    res
+      .status(400)
+      .json({ error: "Invalid request" });
+    return;
+  }
+
+  const deletedTeam = await Team.findByIdAndDelete(_id);
+
+  if (!deletedTeam) {
+    res.status(404).json({ error: "Created Team not found." });
+  } else {
+    res
+      .status(200)
+      .json({
+        message: "Team Successfully Deleted!!",
+        taskName: deletedTeam.teamName,
+      });
+  }
+});
+
+
+module.exports = { createTeam, getAllTeams , fetchSingleTeam, deleteTeam};

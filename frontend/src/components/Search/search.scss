@@ -1,6 +1,31 @@
 @import "../css-config/mixins.scss";
 
 .search {
+  .team-btn{
+      position: relative;
+      top: 20px;
+      right: 10px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      button{
+          padding: 5px 15px;
+          border-radius: 10px;
+          cursor: pointer;
+          // cursor: pointer;
+        background-image: radial-gradient(
+            circle farthest-corner at 10% 20%,
+            rgba(248, 142, 36, 0.84)20.8%,
+            rgba(250, 42, 66, 0.87) 84.4%
+          );
+          color: white;
+          border: none;
+          outline: 2px solid black;
+          font-weight: bold;
+          color: black;
+      }
+  }
   .heading {
     display: flex;
     flex-direction: column;
@@ -26,11 +51,12 @@
       }
     }
     h2 {
-      padding-bottom: 30px;
+      // padding-bottom: 30px;
       font-size: 20px;
       text-align: center;
       @include md {
         font-size: 18px;
+        padding-bottom: 30px;
       }
     }
   }
@@ -42,8 +68,8 @@
      margin-bottom: 20px;
      
       form {
-        background-color: aqua;
-        width: 40%;
+        // background-color: aqua;
+        width: 80%;
         height: 40px;
         display: flex;
         @include md{

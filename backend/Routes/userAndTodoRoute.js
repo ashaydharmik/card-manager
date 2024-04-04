@@ -4,7 +4,8 @@ const {
   getAllUsers, searchUsers, filterUsers, fetchUser
 } = require("../Controller/userController");
 
-const {createTeam, getAllTeams, fetchSingleTeam} = require("../Controller/teamController")
+
+const {createTeam, getAllTeams, fetchSingleTeam,deleteTeam } = require("../Controller/teamController")
 
 const router = express.Router();
 
@@ -19,6 +20,8 @@ router.post("/createTeam", createTeam)
 router.get("/getTeams", getAllTeams);
 
 router.get("/getSingleTeam/:_id", fetchSingleTeam);
+
+router.delete("/deleteTeam/:_id", deleteTeam);
 
 router.use(errorHandler);
 

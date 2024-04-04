@@ -135,9 +135,9 @@ const ListUsers = () => {
           )}
         </div>
         <div className='pagination'>
-          <button onClick={prevPage}>Prev</button>
+          <button onClick={prevPage} id="btn">Prev</button>
           <p>{pages.map(page => <button key={page} onClick={()=> setCurrentPage(page)} className={`${currentPage === page ? "active": ""}`}>{`${page}`}</button>)}</p>
-          <button onClick={nextPage}>Next</button>
+          <button onClick={nextPage} id="btn">Next</button>
         </div>
       </section>
       <Toaster

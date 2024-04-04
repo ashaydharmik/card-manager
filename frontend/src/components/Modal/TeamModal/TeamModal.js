@@ -1,9 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Modal from "react-modal";
+import "./teamModal.scss"
+
 
 const TeamModal = ({ isOpen, onClose, teamId  }) => {
+
 const [membersData, setMembersData] = useState([])
+const [teamName, setTeamName] = useState("");
 
     const customStyles = {
         content: {
@@ -15,7 +19,7 @@ const [membersData, setMembersData] = useState([])
           marginRight: "-50%",
           transform: "translate(-50%, -50%)",
           backgroundColor: "white",
-          width: "70%",
+          width: "83%",
           height: "85%",
           borderRadius: "10px",
         },
@@ -24,11 +28,14 @@ const [membersData, setMembersData] = useState([])
         },
       };
 
+      
+
       useEffect(()=>{
         axios.get(`http://localhost:4000/getSingleTeam/${teamId}`)
         .then(res=>{
             console.log(res.data)
             setMembersData(res.data)
+            setTeamName(res.data.team.name);
         })
         .catch(err=>{
             console.log(err)
@@ -43,12 +50,16 @@ const [membersData, setMembersData] = useState([])
           contentLabel="Logout Modal"
           style={customStyles}
           shouldCloseOnOverlayClick={false}
+          
         >
           <div className='team-details'>
+            <div className='btn'>
             <button onClick={onClose} id="cancel-btn">X</button>
-            <p>{teamId}</p>
-      
+            </div>
+              <h2>{teamName}</h2>
+            <div className='card-list'>
             {membersData.team && membersData.team.members && membersData.team.members.map((member, id) => (
+              <>
         <div className="card" key={id}>
           <div className='card-info'>
             <div className='left'>
@@ -63,7 +74,9 @@ const [membersData, setMembersData] = useState([])
             </div>
           </div>
         </div>
+              </>
       ))}
+            </div>
           </div>
         </Modal>
       );

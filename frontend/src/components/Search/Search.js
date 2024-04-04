@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import axios from 'axios'; // Import axios
 import "./search.scss";
-import Filter from "../Filters/Filter";
 
+import { useNavigate } from 'react-router-dom';
 const Search = ({ setSearchResults }) => { // Receive setSearchResults as prop
   const [searchQuery, setSearchQuery] = useState("");
-
+  const navigate = useNavigate()
   const handleInputChange = async (e) => {
     const query = e.target.value;
     setSearchQuery(query);
@@ -17,9 +17,16 @@ const Search = ({ setSearchResults }) => { // Receive setSearchResults as prop
     }
   };
 
+  const handleTeamsClick=()=>{
+    navigate("/teams")
+  }
+
   return (
     <>
       <section className="search">
+        <div className="team-btn">
+          <button onClick={handleTeamsClick}>Teams</button>
+        </div>
         <div className="heading">
           <h1>WELCOME</h1>
           <h2>Search the users here...</h2>

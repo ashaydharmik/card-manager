@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import "./teams.scss"
 import axios from "axios"
-import TeamModal from '../Modal/TeamModal'
+import TeamModal from '../Modal/TeamModal/TeamModal'
+import DeleteModal from '../Modal/DeleteModal/DeleteModal'
+import { useNavigate } from 'react-router-dom';
 const Teams = () => {
 
   const[teams, setTeams] = useState([])
   const [isTeamModalOpen, setIsTeamModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedTeamId, setSelectedTeamId] = useState(null);
-
+const navigate = useNavigate()
 
   const handleViewTeamClick = (teamId) => {
     setSelectedTeamId(teamId)
@@ -16,9 +19,15 @@ const Teams = () => {
 
   const handleCloseTeamModal = () => {
     setIsTeamModalOpen(false);
+    setIsDeleteModalOpen(false)
   };
 
-  useEffect(()=>{
+  const handleDeleteTeamClick = (teamId) => {
+    setSelectedTeamId(teamId)
+    setIsDeleteModalOpen(true);
+  };
+
+  const handleTeamShow=()=>{
     axios.get("http://localhost:4000/getTeams")
     .then(res=>{
       console.log(res.data)
@@ -27,11 +36,22 @@ const Teams = () => {
     .catch(err=>{
       console.log(err)
     })
+  }
+  
+  useEffect(()=>{
+    handleTeamShow()
   },[])
 
+  const handleBackClick=()=>{
+    navigate("/listUsers")
+  }
+ 
   return (
     <>
     <section className='teams-container'>
+      <div className='back-btn'>
+      <button onClick={handleBackClick}>Back</button>
+      </div>
       <div className='teams-heading'>
         <h1>Teams</h1>
       </div>
@@ -44,12 +64,11 @@ const Teams = () => {
       <p>
 
     <button onClick={()=> handleViewTeamClick(team._id)}>View Team</button>
-    <button>Delete</button>
+    <button onClick={()=> handleDeleteTeamClick(team._id)}>Delete</button>
       </p>
     </li>
   })
-}
-          
+}   
         </ol>
       </div>
     </section>
@@ -57,6 +76,12 @@ const Teams = () => {
         isOpen={isTeamModalOpen}
         onClose={handleCloseTeamModal}
         teamId = {selectedTeamId}
+      />
+      <DeleteModal
+      isOpen={isDeleteModalOpen}
+      onClose={handleCloseTeamModal}
+      teamId = {selectedTeamId}
+      handleTeamShow={handleTeamShow}
       />
     </>
   )
