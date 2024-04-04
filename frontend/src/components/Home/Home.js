@@ -19,7 +19,7 @@ const Home = () => {
           </div>
           <div className="footer">
             <Link to="/listUsers" className="footer-link">
-              <p>Search Movies</p>
+              <p>Search Users</p>
               <p>
                 <FaAngleDoubleDown />
               </p>
